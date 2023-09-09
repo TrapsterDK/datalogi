@@ -1,0 +1,49 @@
+strict: true
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TrapsterDK/datalogi
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_if_no_docstring: true
+            show_signature_annotations: true
+  # Autodoc configuration.
+  # https://mkdocstrings.github.io/recipes/#automatic-code-reference-pages
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+
+extra_css:
+  - css/mkdocstrings.css
+
+watch:
+  # Watch src/ directory to reload on changes to docstrings for mkdocstrings plugin.
+  - src
+
+site_name: Datalogi
+repo_url: https://github.com/TrapsterDK/datalogi
+repo_name: datalogi
+copyright: Copyright &copy; 2023 Martin Kuntz Jacobsen
